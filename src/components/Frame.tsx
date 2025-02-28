@@ -153,8 +153,7 @@ export default function Frame() {
             <CardHeader>
               <CardTitle>Active Frame</CardTitle>
               <CardDescription>
-                {added ? 'Frame installed - ' : 'Install frame to begin'}
-                {context?.client.platform}
+                {added ? 'Frame installed' : 'Install frame to begin'}
               </CardDescription>
             </CardHeader>
             <CardContent>
