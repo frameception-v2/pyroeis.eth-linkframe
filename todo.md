@@ -1,5 +1,5 @@
 #### Database
-- [ ] Task 1: Create base frame endpoints  
+- [x] Task 1: Create base frame endpoints  
   File: src/routes/frame.js  
   Action: Create file with GET/POST handlers  
   Code:  
@@ -20,7 +20,7 @@
   ```  
   Outcome: Frame displays 3 buttons with "My Links" header image
 
-- [ ] Task 2: Add state management  
+- [x] Task 2: Add state management  
   File: src/routes/frame.js  
   Action: Modify POST handler  
   Code:  

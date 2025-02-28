@@ -43,8 +43,15 @@ export default function Frame() {
   const [context, setContext] = useState<Context.FrameContext>();
 
   const [added, setAdded] = useState(false);
-
+  const [frameState, setFrameState] = useState({ currentPage: 'main' });
   const [addFrameResult, setAddFrameResult] = useState("");
+
+  // Handle frame button interactions
+  const handleFrameAction = useCallback((buttonIndex: number) => {
+    if (buttonIndex === 3) {
+      setFrameState(prev => ({ ...prev, currentPage: 'more' }));
+    }
+  }, []);
 
   const addFrame = useCallback(async () => {
     try {
@@ -140,7 +147,30 @@ export default function Frame() {
         <h1 className="text-2xl font-bold text-center mb-4 text-gray-700 dark:text-gray-300">
           {PROJECT_TITLE}
         </h1>
-        <ExampleCard />
+        
+        {frameState.currentPage === 'main' ? (
+          <Card>
+            <CardHeader>
+              <CardTitle>Active Frame</CardTitle>
+              <CardDescription>
+                {added ? 'Frame installed - ' : 'Install frame to begin'}
+                {context?.client.platform}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Label>{addFrameResult || "Ready for interactions"}</Label>
+            </CardContent>
+          </Card>
+        ) : (
+          <Card>
+            <CardHeader>
+              <CardTitle>Recent Links</CardTitle>
+              <CardDescription>
+                More content loading...
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        )}
       </div>
     </div>
   );
